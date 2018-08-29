@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>mixins</title>
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+       <h1>mixins options</h1>
+       <hr>
+       <div id="app">
+         <p>{{num}}</p>
+         <p><button @click="addone">addone</button></p>
+       </div>
+       <script type="text/javascript">
+           var addconsole = {
+               updated:function(){
+                   console.log("数据的变化");
+               }
+           };
+           Vue.mixin({
+               updated:function(){
+                   console.log("我是全局的混入");
+               }
+           });
+           var app = new Vue({
+               el:'#app',
+               data:{
+                   num: 5
+               },
+               methods:{
+                   addone:function(){
+                       this.num++;
+                   }
+               },
+               updated:function(){
+                   console.log("woshiyuanshengdeupdated  原生的后执行");
+               },
+               mixins:[addconsole]
+           })
+       </script>
+    </body>
+</html>

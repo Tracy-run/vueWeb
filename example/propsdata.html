@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Propsdata</title>
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+       <h1>Propsdata</h1>
+       <hr>
+       <header></header>
+       <script type="text/javascript">
+           var header_a = Vue.extend({
+               template:`<p>{{message}}----{{a}}<p/>`,
+               data:function(){
+                   return {
+                       message:"hello Mr.tree!"
+                   }
+               },
+               props:['a']
+           });
+
+           new header_a({propsData:{a: 'fdsf'}}).$mount('header');
+        //    new header_a().$mount('header'); //也可以用#id的形式挂载
+       </script>
+    </body>
+</html>

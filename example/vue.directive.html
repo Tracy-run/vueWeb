@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>vue-directive</title>
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+       <h1>directive 自定义标签</h1>
+       <hr>
+       <div id="app">
+       <div v-jspang="color">{{num}}</div>
+       <p> <button @click="add">加加</button></p>
+       <p>
+           <button onclick="unbind()">解绑</button>
+       </p>
+    </div>
+       <script type="text/javascript">
+        //    Vue.directive("jspang",function(el,binding){
+        //     //    console.log(el);
+        //     //    console.log(binding);
+        //     //    console.log(binding.name);
+        //     //    console.log(binding.value);
+        //        el.style="color:" + binding.value;
+        //    })
+            
+        // 各种钩子的加载顺序
+           Vue.directive("jspang",{
+               bind:function(el,binding){
+                   console.log('1---bind');
+                   el.style="color:" + binding.value;
+               },
+               inserted:function(){
+                   console.log('2---inserted');
+                },
+                update:function(){
+                    console.log('3---update');
+                },
+                componentUpdated:function(){
+                    console.log('4---componentUpdated');
+                },
+                unbind:function(){
+                    console.log('5---unbind');
+                }
+           })
+
+           function unbind(){
+               app.$destroy(); 
+           }
+
+
+
+           var app = new Vue({
+               el:'#app',
+               data:{
+                   num:10,
+                   color:'red'
+               },
+               methods:{
+                add:function(){
+                    this.num++
+                }
+               }
+           })
+       </script>
+    </body>
+</html>

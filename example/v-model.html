@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>v-model</title>
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+       <h1>v-model</h1>
+       <br>
+       <div id="app">
+         <p> 原始信息: {{message}} fff</p>
+         <h3>文本框</h3>
+         <p>v-model<input type="text" v-model="message"></p>
+         <p>v-model.lazy<input type="text" v-model.lazy="message"></p>
+         <p>v-model-number<input type="text" v-model.number="message"></p>
+         <p>v-model-trim<input type="text" v-model.trim="message"></p>
+         <h3>文本域</h3>
+         <textarea cols="30" rows="10" v-model="message"></textarea>
+         
+         <h3>多选框绑定一个值</h3>
+         <input type="checkbox" id="istrue" v-model="istrue">
+         <lebal for="istrue">{{istrue}}</lebal>
+         <hr/>
+         <h3>多选框绑定数组</h3>
+         <p>
+             <input type="checkbox" id="james" value="james" v-model="web_name">
+             <leble for="istrue">james</leble>
+             <input type="checkbox" id="kobe" value="kobe" v-model="web_name">
+             <leble for="istrue">kobe</leble>
+             <input type="checkbox" id="jordan" value="jordan" v-model="web_name">
+             <leble for="istrue">jordan</leble>
+         </p>
+         <p>{{web_name}}</p>
+         <h3>单选框绑定</h3>
+         <p>
+             <input type="radio" id="male" value="男" v-model="sex">
+             <label for="one">男</label>
+             <input type="radio" id="male" value="女" v-model="sex">
+             <label for="two">女</label>
+             <p>你选择的性别是:{{sex}}</p>
+         </p>
+       </div>
+       <script type="text/javascript">
+           var app = new Vue({
+               el:'#app',
+               data:{
+                   message:"exchange",
+                   istrue:true,
+                   web_name:[],
+                   sex: '男'
+               }
+           })
+       </script>
+    </body>
+</html>

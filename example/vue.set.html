@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>vue.set</title>
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+    </head>
+    <body>
+       <h1>vue.set</h1>
+       <hr>
+       <div id="app">
+         {{count}}
+         <ul>
+             <li v-for="item in arr">{{item}}</li>
+         </ul>
+         <!-- <button @click="addOne">addone</button> -->
+       </div>
+       <p><button onclick="added()">add</button></p>
+       <script type="text/javascript">
+           function added(){
+               //Vue.set(outdata,'count',3); //用下标的方式改变数组
+               //app.count++;
+            //    outdata.count++;
+               Vue.set(app.arr,1,'dd');
+           }
+           var outdata={
+               count:1,
+               goods:'car',
+               arr:['aaaa','bbbb','ccccc']
+           } 
+           var app = new Vue({
+               el:'#app',
+               data:outdata
+           })
+       </script>
+    </body>
+</html>
